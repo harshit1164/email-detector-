@@ -1,90 +1,104 @@
-🚀 Quick Start
-1. Preprocessing the Data
-First, clean and vectorize the data:
+# 🎯 Phishing Email Detection – End-to-End Machine Learning Project
 
+Hi! I'm excited to share my project built for the hackathon — a simple and powerful **Phishing Email Detection System** that works straight from your terminal. 🚀
 
+---
 
-2. Training the Model
-Train the model on the preprocessed data:
+## 💡 Why I Built This
 
+Phishing attacks are one of the most common cybersecurity threats today. They trick users into clicking dangerous links or giving away sensitive information.
 
-Trains a Random Forest Classifier with 100 trees
+I wanted to build a tool that could:
+- Read raw email content
+- Analyze it using machine learning
+- Predict instantly whether it's **PHISHING** or **LEGIT**
 
-Evaluates model using classification metrics (precision, recall, f1-score)
+---
 
-Saves the model and vectorizer to /data/phishing_detector.pkl
+## 🧠 How It Works (Overview)
 
-✅ Output: /data/phishing_detector.pkl
+Here’s how I built it:
 
-3. Making Predictions
-Run the interactive prediction script:
+1. **Collected and cleaned a dataset** of spam and ham (non-spam) emails
+2. **Converted email text into numerical features** using TF-IDF vectorization
+3. **Trained a Random Forest model** to classify phishing vs legit emails
+4. **Built a real-time terminal tool** to allow users to test email content instantly
 
+Let’s walk through each part.
 
-Accepts email content via input
+---
 
-Predicts whether the email is PHISHING or LEGIT
+## 📊 Dataset and Preprocessing (`preprocess.py`)
 
-Threshold: If phishing probability > 0.4 → PHISHING, else LEGIT
+- I started with the classic `spam.csv` dataset which includes thousands of labeled messages.
+- I cleaned it up, renamed columns (`v1` → `label`, `v2` → `text`) and mapped labels like:
+  - `spam` or `phishing` → 1
+  - `ham` or `legit` → 0
 
-📊 Model Details
-Algorithm: Random Forest Classifier
+Then I used `TfidfVectorizer` to extract up to 5000 important features from each email.
 
-Text Vectorization: TF-IDF (Term Frequency-Inverse Document Frequency)
+Once done, I saved the vectors and labels into a file called `preprocessed.pkl` so they can be reused for training.
 
-Dataset: spam.csv (standard spam/ham dataset)
+---
 
-Performance Metrics: Precision, Recall, F1-Score (printed after training)
+## 🔍 Training the Model (`train.py`)
 
-📦 Requirements
-Install the required Python libraries:
+- I loaded the preprocessed data and trained a **Random Forest Classifier**.
+- After training, I evaluated the model with precision, recall, and F1-score.
+- I saved the trained model and vectorizer to `phishing_detector.pkl` for easy use during prediction.
 
+📂 All saved models go into a folder called `/data`.
 
-📚 How It Works
-Preprocessing
+---
 
-Remove missing values
+## 🧪 Real-Time Email Prediction (`predict.py`)
 
-Normalize labels
+This is the fun part!
 
-Convert text data into TF-IDF vectors
+- Just run the script, paste your email content, and the model will tell you if it's **PHISHING** or **LEGIT** in real-time.
+- It uses a probability threshold: anything above **0.4** is considered phishing.
 
-Training
-
-Use Random Forest (good for handling text features and overfitting)
-
-Model learns to distinguish between phishing and legit emails
-
-Prediction
-
-New emails are vectorized using the same TF-IDF vectorizer
-
-Model outputs probability for phishing
-
-📈 Example
-
-Paste the email content (or type 'exit' to quit):
-👉 "Congratulations! You've won a free iPhone. Click here to claim now."
-
-🔎 Prediction: PHISHING
-
-
+```bash
+$ python predict.py
 
 Paste the email content (or type 'exit' to quit):
-👉 "Meeting scheduled at 3 PM regarding quarterly report."
+👉 Your account has been suspended. Click here to verify now.
 
-🔎 Prediction: LEGIT
+Result: PHISHING
 
+Paste the email content (or type 'exit' to quit):
+👉 Hey team, please review the attached project report.
 
+Result: LEGIT
+⚙️ Tech Stack
+Python 3
 
+scikit-learn
+pandas
+numpy
 
-✨ Future Improvements
-Add deep learning models like LSTM
+TF-IDF for feature extraction
 
-Use word embeddings (Word2Vec, GloVe)
+Random Forest Classifier
 
-Deploy as a Flask web application
+📦 Folder Structure
+bash
+Copy
+Edit
+├── spam.csv                 # Dataset
+├── preprocess.py            # Text cleaning and vectorization
+├── train.py                 # Model training and saving
+├── predict.py               # Real-time terminal-based prediction
+├── preprocessed.pkl         # Saved training data
+├── requirements.txt         # Install dependencies
+└── data/
+    └── phishing_detector.pkl  # Trained model + vectorizer
 
-Add more phishing-specific datasets
+🤝 Want to Contribute?
+Fork it, try a different model, or use a larger dataset. Pull requests are welcome!
 
-👨‍💻 Author
-Made with ❤️ by Harshit Tiwari
+👤 Author
+HARSHIT TIWARI
+
+Thanks for reading! Hope this helps keep inboxes safe and spam-free. 🛡️📬
+
