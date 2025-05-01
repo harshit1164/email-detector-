@@ -93,6 +93,11 @@ Edit
 ├── requirements.txt         # Install dependencies
 └── data/
     └── phishing_detector.pkl  # Trained model + vectorizer
+Demo Video
+
+🔽 The demo video is included in this repository as `demo.mp4`.  
+Please click **"View Raw"** to download and watch it:  
+👉 [Click here to download and watch](./demo.mp4)
 
 🤝 Want to Contribute?
 Fork it, try a different model, or use a larger dataset. Pull requests are welcome!
