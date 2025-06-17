@@ -6,7 +6,7 @@ Hi! I'm excited to share my project built for the hackathon — a simple and pow
 
 ## 💡 Why I Built This
 
-Phishing attacks are one of the most common cybersecurity threats today. They trick users into clicking dangerous links or giving away sensitive information.
+Phishing attacks are one of the most common cybersecurity threats  today. They trick users into clicking dangerous links or giving away sensitive information.
 
 I wanted to build a tool that could:
 - Read raw email content
